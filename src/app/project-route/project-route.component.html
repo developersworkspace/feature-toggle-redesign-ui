@@ -1,0 +1,45 @@
+<div id="page-wrapper">
+  <div>
+      <div class="row">
+          <div class="col-lg-12">
+            <h1 class="e-page-header">Projects</h1>
+          </div>
+        </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <a href="/projects/create" class="e-btn e-btn-primary e-btn-shadow">Create Project</a>
+      </div>
+      <div class="col-lg-6 form-group">  
+        <label class="hidden">Search:</label>
+        <input class="form-control e-form-control" placeholder="Search Projects" [(ngModel)]="filterQuery">
+        <i class="fa fa-search fa-fw e-search"></i>
+      </div>
+    </div>
+    <table class="table e-table e-table-striped" [mfData]="projects | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <thead class="e-thead">
+        <tr>
+          <th>
+            <mfDefaultSorter by="key">Key</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of mf.data">
+          <td>{{project.key}}</td>
+          <td>{{project.name}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  </div>
