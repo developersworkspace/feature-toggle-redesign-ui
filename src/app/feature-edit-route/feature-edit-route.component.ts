@@ -7,6 +7,8 @@ import { ConsumerGroupView } from '../entity-views/consumer-group';
 import { EnvironmentView } from '../entity-views/environment';
 import { Option } from '../value-objects/option';
 import { ValidationMessage } from '../models/validation-message';
+import { ConsumerGroupService } from '../services/consumer-group.service';
+import { ConsumerGroup } from '../entities/consumer-group';
 
 @Component({
   selector: 'app-feature-edit-route',
@@ -15,9 +17,7 @@ import { ValidationMessage } from '../models/validation-message';
 })
 export class FeatureEditRouteComponent implements OnInit {
 
-  public consumerGroups: ConsumerGroupView[] = [
-    new ConsumerGroupView([], 'a', 'aaa')
-  ];
+  public consumerGroups: ConsumerGroupView[] = [];
 
   public defaultEnvironmentKey: string = null;
 
@@ -31,6 +31,7 @@ export class FeatureEditRouteComponent implements OnInit {
 
    constructor(
     private activatedRoute: ActivatedRoute,
+    private consumerGroupService: ConsumerGroupService,
     private featureService: FeatureService,
     private router: Router,
   ) { }
@@ -40,6 +41,8 @@ export class FeatureEditRouteComponent implements OnInit {
 
     this.activatedRoute.queryParams.subscribe((params: Params): void => {
       const key: string = params['key'];
+
+      this.loadConsumerGroups();
       this.loadFeature(key);
     });
   }
@@ -68,6 +71,12 @@ export class FeatureEditRouteComponent implements OnInit {
     // TODO
 
     this.submit();
+  }
+
+  private loadConsumerGroups(): void {
+    this.consumerGroupService.list().subscribe((consumerGroups: ConsumerGroup[]) => {
+      this.consumerGroups = consumerGroups.map((x) => new ConsumerGroupView(x.consumers, x.key, x.name));
+    });
   }
 
   private loadFeature(featureKey: string): void {
