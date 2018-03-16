@@ -2,20 +2,20 @@
   <div>
       <div class="row">
           <div class="col-lg-12">
-            <h1 class="e-page-header">Projects</h1>
+            <h1 class="e-page-header">Environments</h1>
           </div>
         </div>
     <div class="row">
       <div class="col-lg-3">
-        <a [routerLink]="['/project/create']" class="e-btn e-btn-primary e-btn-shadow">Create Project</a>
+        <a [routerLink]="['/environment/create']" class="e-btn e-btn-primary e-btn-shadow">Create Environment</a>
       </div>
       <div class="col-lg-6 form-group">  
         <label class="hidden">Search:</label>
-        <input class="form-control e-form-control" placeholder="Search Projects" [(ngModel)]="filterQuery">
+        <input class="form-control e-form-control" placeholder="Search Environments" [(ngModel)]="filterQuery">
         <i class="fa fa-search fa-fw e-search"></i>
       </div>
     </div>
-    <table class="table e-table e-table-striped" [mfData]="projects | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <table class="table e-table e-table-striped" [mfData]="environments | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">
       <thead class="e-thead">
         <tr>
           <th>
@@ -28,9 +28,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let project of mf.data">
-          <td>{{ project.key }}</td>
-          <td>{{ project.name }}</td>
+        <tr *ngFor="let environment of mf.data">
+          <td>{{ environment.key }}</td>
+          <td>{{ environment.name }}</td>
         </tr>
       </tbody>
       <tfoot>

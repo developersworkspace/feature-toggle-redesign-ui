@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from '../entities/project';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-project-route',
@@ -7,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectRouteComponent implements OnInit {
 
-  public projects: any[] = [];
+  public projects: Project[] = [];
 
-  constructor() {
-   
+  constructor(
+    private projectService: ProjectService,
+  ) {
+
   }
 
   public ngOnInit(): void {
-    
+    this.loadProjects();
+  }
+
+  private loadProjects(): void {
+    this.projectService.list().subscribe((projects: Project[]) => {
+      this.projects = projects;
+    });
   }
 
 }

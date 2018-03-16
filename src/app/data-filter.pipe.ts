@@ -1,8 +1,8 @@
-import * as _ from "lodash";
-import { Pipe, PipeTransform } from "@angular/core";
+import * as _ from 'lodash';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: "dataFilter"
+    name: 'dataFilter'
 })
 export class DataFilterPipe implements PipeTransform {
 
@@ -22,7 +22,7 @@ export class DataFilterPipe implements PipeTransform {
     private match(row: any, query: string) {
 
         query = query.toLowerCase();
-        
+
         for (const key in row) {
 
             if (row[key] instanceof Function) {

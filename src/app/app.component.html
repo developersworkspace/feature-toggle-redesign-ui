@@ -7,45 +7,45 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand e-nav__header" href="/">Feature Toggle</a>
+      <a [routerLink]="['/']" class="navbar-brand e-nav__header">Feature Toggle</a>
     </div>
 
-    <div class="e-nav__dropdown" *ngIf="showEnvironmentDropdown">
-      <!-- <select class="form-control e-form-control e-form-control__small" [(ngModel)]="environment" (change)="onChange_Environment()">
-        <option *ngFor="let item of environments" value="{{ item }}">{{item}}</option>
-      </select> -->
+    <div class="e-nav__dropdown">
+      <select class="form-control e-form-control e-form-control__small" [(ngModel)]="environment" (change)="setDefaultEnvironment()">
+        <option *ngFor="let item of environments" value="{{ item }}">{{ item }}</option>
+      </select>
     </div>
     <div class="navbar-default sidebar" role="navigation">
       <div class="sidebar-nav navbar-collapse">
         <ul class="nav e-nav__side" id="side-menu">
           <li>
-            <a href="/projects">
+            <a [routerLink]="['/project']">
               <i class="fa fa-university fa-fw e-l__mr-10"></i> Projects</a>
           </li>
           <li>
-            <a href="/environments">
+            <a [routerLink]="['/environment']">
               <i class="fa fa-globe fa-fw e-l__mr-10"></i>Environments</a>
           </li>
           <li>
-            <a href="/featuregroups">
+            <a [routerLink]="['/featuregroup']">
               <i class="fa fa-chain fa-fw e-l__mr-10"></i> Feature Groups</a>
           </li>
           <li>
-            <a href="/features">
+            <a [routerLink]="['/feature']">
               <i class="fa fa-beer fa-fw e-l__mr-10"></i> Features</a>
           </li>
           <li>
-            <a href="/groups">
+            <a [routerLink]="['/consumergroups']">
               <i class="fa fa-group fa-fw e-l__mr-10"></i> Consumer Groups</a>
           </li>
           <li>
-            <a href="/audits">
+            <a [routerLink]="['/audit']">
               <i class="fa fa-pencil fa-fw e-l__mr-10"></i> Audits</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" (click)="logOut()">
               <i class="fa fa-sign-out fa-fw e-l__mr-10"></i> Logout</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
