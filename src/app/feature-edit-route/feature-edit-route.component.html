@@ -32,6 +32,9 @@
       <span class="e-edit-title">{{ defaultEnvironmentKey }}</span>
     </div>
   </div>
+  <div *ngFor="let message of validationMessages">
+    <p class="e-text-danger">{{ message.message }}</p>
+  </div>
   <div *ngFor="let environment of feature.environments">
     <div *ngIf="environment.key == defaultEnvironmentKey">
       <div class="row e-l__mt-30">

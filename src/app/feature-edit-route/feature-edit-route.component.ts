@@ -55,7 +55,9 @@ export class FeatureEditRouteComponent implements OnInit {
   }
 
   public removeConsumerGroup(consumerGroup: ConsumerGroupView, environment: EnvironmentView): void {
-    // TODO
+    const index: number = environment.consumerGroups.indexOf(consumerGroup);
+
+    environment.consumerGroups.splice(index, 1);
 
     this.submit();
   }
@@ -68,7 +70,11 @@ export class FeatureEditRouteComponent implements OnInit {
   }
 
   public removeOption(environment: EnvironmentView, option: Option): void {
-    // TODO
+    const index: number = environment.options.indexOf(option);
+
+    environment.options.splice(index, 1);
+
+    this.submit();
 
     this.submit();
   }
