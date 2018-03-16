@@ -23,6 +23,7 @@ import { FeatureEditRouteComponent } from './feature-edit-route/feature-edit-rou
 import { FeatureService } from './services/feature.service';
 import { ConsumerGroupService } from './services/consumer-group.service';
 import { ConsumerGroupRouteComponent } from './consumer-group-route/consumer-group-route.component';
+import { ConsumerGroupCreateRouteComponent } from './consumer-group-create-route/consumer-group-create-route.component';
 
 const routes = [
   {
@@ -78,13 +79,13 @@ const routes = [
     //   AuthGuard
     // ]
   },
-  // {
-  //   component: GroupsCreateRouteComponent,
-  //   path: 'groups/create',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
+  {
+    component: ConsumerGroupCreateRouteComponent,
+    path: 'consumergroup/create',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
   // {
   //   component: GroupsEditRouteComponent,
   //   path: 'groups/edit',
@@ -152,6 +153,7 @@ const routes = [
     FeatureCreateRouteComponent,
     FeatureEditRouteComponent,
     ConsumerGroupRouteComponent,
+    ConsumerGroupCreateRouteComponent,
   ],
   imports: [
     BrowserModule,
