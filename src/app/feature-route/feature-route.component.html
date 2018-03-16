@@ -1,0 +1,69 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="e-page-header">Features</h1>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-lg-3">
+          <a [routerLink]="['/feature/create']" class="e-btn e-btn-primary e-btn-shadow">Create Feature</a>
+      </div>
+      <div class="col-lg-6 form-group">
+        <label class="hidden">Search:</label>
+        <input class="form-control e-form-control" placeholder="Search Features" [(ngModel)]="filterQuery">
+        <i class="fa fa-search fa-fw e-search"></i>
+      </div>
+    </div>
+    <table class="table e-table e-table-striped" [mfData]="features | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <thead class="e-thead">
+        <tr>
+          <th>
+            <mfDefaultSorter by="key">Key</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+          </th>
+          <th>Project Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feature of mf.data">
+          <td>{{ feature.key }}</td>
+          <td>{{ feature.name }}</td>
+          <td>{{ feature.project.name }}</td>
+          <td>
+            <span *ngFor="let environment of feature.environments">
+                <button class="e-btn__small e-btn-warning" (click)="toggle(feature, environment)" *ngIf="environment.key == defaultEnvironmentKey && environment.enabled">Disable&nbsp;<i class="fa fa-times e-l__ml-5"></i></button>
+                <button class="e-btn__small e-btn-secondary" (click)="toggle(feature, environment)" *ngIf="environment.key == defaultEnvironmentKey && !environment.enabled">Enable&nbsp;<i class="fa fa-check e-l__ml-5"></i></button>
+            </span>
+            <a [routerLink]="['/features/edit?key=' + feature.key]" class="e-btn__small e-btn-edit">Edit&nbsp;<i class="fa fa-edit e-l__ml-5"></i></a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+    <div *ngIf="toggleSelectedFeature && toggleSelectedEnvironment" class="e-modal__disabled-bg">
+      <div class="e-modal">
+        <div>
+          <h4>Enter Reason for the Toggle</h4>
+          <textarea class="form-control e-form-control e-form-control__textarea" placeholder="" [(ngModel)]="toggleReason"> </textarea>
+          <div *ngFor="let message of validationMessages">
+            <p class="e-text-danger">{{ message.message }}</p>
+          </div>
+        </div>
+        <div class="e-modal__buttons">
+          <button class="e-btn__small e-btn-warning" (click)="cancelToggle()">Cancel</button>
+          <button class="e-btn__small e-btn-secondary" (click)="submitToggle()">Submit</button>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>

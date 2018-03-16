@@ -12,7 +12,7 @@
 
     <div class="e-nav__dropdown">
       <select class="form-control e-form-control e-form-control__small" [(ngModel)]="environment" (change)="setDefaultEnvironment()">
-        <option *ngFor="let item of environments" value="{{ item }}">{{ item }}</option>
+        <option *ngFor="let item of environments" [ngValue]="item">{{ item.name }}</option>
       </select>
     </div>
     <div class="navbar-default sidebar" role="navigation">

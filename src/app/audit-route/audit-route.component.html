@@ -1,0 +1,33 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="e-page-header">Audits</h1>
+    </div>
+  </div>
+  <table class="table e-table e-table-striped">
+    <thead class="e-thead">
+      <tr>
+        <th>
+          Message
+        </th>
+        <th>
+          User Name
+        </th>
+        <th>
+          Timestamp
+        </th>
+        <th>
+          Reason
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let audit of audits">
+        <td>{{ audit.message }}</td>
+        <td>{{ audit.userName }}</td>
+        <td>{{ audit.timestamp | date: 'yyyy-MM-dd HH:mm' }}</td>
+        <td>{{ audit.reason }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

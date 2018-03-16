@@ -1,0 +1,38 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="e-page-header">Create Feature</h1>
+    </div>
+  </div>
+  <div class="e-create-container">
+    <div class="form-group e-form-group">
+      <label class="e-form-label">Key:</label>
+      <input [(ngModel)]="feature.key" type="text" placeholder="Enter Feature Key" class="form-control e-form-control">
+    </div>
+    <div class="form-group e-form-group">
+      <label class="e-form-label">Name:</label>
+      <input [(ngModel)]="feature.name" type="text" placeholder="Enter Feature Name" class="form-control e-form-control">
+    </div>
+    <div class="form-group e-form-group">
+      <label class="e-form-label">Type:</label>
+      <select [(ngModel)]="feature.type" class="form-control e-form-control">
+        <option selected="selected" disabled>Select a Toggle Type</option>
+        <option [ngValue]="'Experiment Toggle'">Experiment Toggle</option>
+        <option [ngValue]="'Ops Toggle'">Ops Toggle</option>
+        <option [ngValue]="'Permission Toggle'">Permission Toggle</option>
+        <option [ngValue]="'Release Toggle'">Release Toggle</option>
+      </select>
+    </div>
+    <div class="form-group e-form-group">
+      <label class="e-form-label">Project:</label>
+      <select class="form-control e-form-control" [(ngModel)]="feature.project"> 
+        <option selected="selected">Select a Project</option>
+        <option *ngFor="let project of projects" [ngValue]="project">{{ project.name }} ({{ project.key }})</option>
+      </select>
+    </div>
+    <div *ngFor="let message of validationMessages">
+      <p class="e-text-danger">{{ message.message }}</p>
+    </div>
+    <button (click)="submit()" class="e-btn e-btn-primary e-btn-shadow pull-right">Create</button>
+  </div>
+</div>

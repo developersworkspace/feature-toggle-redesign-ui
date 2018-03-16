@@ -12,6 +12,15 @@ import { ProjectCreateRouteComponent } from './project-create-route/project-crea
 import { EnvironmentCreateRouteComponent } from './environment-create-route/environment-create-route.component';
 import { EnvironmentRouteComponent } from './environment-route/environment-route.component';
 import { EnvironmentService } from './services/environment.service';
+import { AuditRouteComponent } from './audit-route/audit-route.component';
+import { AuditService } from './services/audit.service';
+import { FeatureGroupCreateRouteComponent } from './feature-group-create-route/feature-group-create-route.component';
+import { FeatureGroupRouteComponent } from './feature-group-route/feature-group-route.component';
+import { FeatureGroupEditRouteComponent } from './feature-group-edit-route/feature-group-edit-route.component';
+import { FeatureRouteComponent } from './feature-route/feature-route.component';
+import { FeatureCreateRouteComponent } from './feature-create-route/feature-create-route.component';
+import { FeatureEditRouteComponent } from './feature-edit-route/feature-edit-route.component';
+import { FeatureService } from './services/feature.service';
 
 const routes = [
   {
@@ -23,7 +32,7 @@ const routes = [
   },
   {
     component: ProjectRouteComponent,
-    path: 'projects',
+    path: 'project',
     // canActivate: [
     //   AuthGuard
     // ]
@@ -39,20 +48,20 @@ const routes = [
     //   AuthGuard
     // ]
   },
-  // {
-  //   component: FeaturesListRouteComponent,
-  //   path: 'features',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
-  // {
-  //   component: FeaturesCreateRouteComponent,
-  //   path: 'features/create',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
+  {
+    component: FeatureRouteComponent,
+    path: 'feature',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
+  {
+    component: FeatureCreateRouteComponent,
+    path: 'feature/create',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
   // {
   //   component: FeaturesEditRouteComponent,
   //   path: 'features/edit',
@@ -81,34 +90,34 @@ const routes = [
   //     AuthGuard
   //   ]
   // },
-  // {
-  //   component: AuditListRouteComponent,
-  //   path: 'audits',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
-  // {
-  //   component: FeatureGroupsListRouteComponent,
-  //   path: 'featuregroups',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
-  // {
-  //   component: FeatureGroupsCreateRouteComponent,
-  //   path: 'featuregroups/create',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
-  // {
-  //   component: FeatureGroupsEditRouteComponent,
-  //   path: 'featuregroups/edit',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
+  {
+    component: AuditRouteComponent,
+    path: 'audit',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
+  {
+    component: FeatureGroupRouteComponent,
+    path: 'featuregroup',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
+  {
+    component: FeatureGroupCreateRouteComponent,
+    path: 'featuregroup/create',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
+  {
+    component: FeatureGroupEditRouteComponent,
+    path: 'featuregroup/edit',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
   {
     component: EnvironmentRouteComponent,
     path: 'environment',
@@ -133,6 +142,13 @@ const routes = [
     ProjectCreateRouteComponent,
     EnvironmentCreateRouteComponent,
     EnvironmentRouteComponent,
+    AuditRouteComponent,
+    FeatureGroupCreateRouteComponent,
+    FeatureGroupRouteComponent,
+    FeatureGroupEditRouteComponent,
+    FeatureRouteComponent,
+    FeatureCreateRouteComponent,
+    FeatureEditRouteComponent,
   ],
   imports: [
     BrowserModule,
@@ -142,7 +158,9 @@ const routes = [
     RouterModule.forRoot(routes),
   ],
   providers: [
+    AuditService,
     EnvironmentService,
+    FeatureService,
     ProjectService,
   ],
   bootstrap: [AppComponent]

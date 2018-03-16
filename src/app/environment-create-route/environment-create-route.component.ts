@@ -28,7 +28,7 @@ export class EnvironmentCreateRouteComponent implements OnInit {
     this.environmentService.create(this.environment).subscribe((environment: Environment) => {
       this.router.navigateByUrl('/environment');
     }, (err) => {
-      this.validationMessages = JSON.parse(err._body);
+      this.validationMessages = err.error;
     });
   }
 

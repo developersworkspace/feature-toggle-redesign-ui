@@ -28,7 +28,7 @@ export class ProjectCreateRouteComponent implements OnInit {
     this.projectService.create(this.project).subscribe((project: Project) => {
       this.router.navigateByUrl('/');
     }, (err) => {
-      this.validationMessages = JSON.parse(err._body);
+      this.validationMessages = err.error;
     });
   }
 

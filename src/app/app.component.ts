@@ -32,7 +32,7 @@ export class AppComponent  implements OnInit {
     this.environmentService.list().subscribe((environments: Environment[]) => {
       this.environments = environments;
 
-      const defaultEnvironment: Environment = this.environments.find((environment: Environment) => 
+      const defaultEnvironment: Environment = this.environments.find((environment: Environment) =>
       environment.key === localStorage.getItem('defaultEnvironment'));
 
       this.environment = defaultEnvironment;
