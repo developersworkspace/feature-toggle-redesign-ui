@@ -13,6 +13,12 @@ export class FeatureService {
     return this.http.post<Feature>(`${environment.api.uri}/feature`, feature);
   }
 
+  public find(featureKey: string): Observable<Feature> {
+    return this.http.get<Feature[]>(`${environment.api.uri}/feature`).map((features: Feature[]) => {
+      return features.find((feature) => feature.key === featureKey);
+    });
+  }
+
   public list(): Observable<Feature[]> {
     return this.http.get<Feature[]>(`${environment.api.uri}/feature`);
   }

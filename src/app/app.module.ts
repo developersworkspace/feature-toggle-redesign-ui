@@ -62,13 +62,13 @@ const routes = [
     //   AuthGuard
     // ]
   },
-  // {
-  //   component: FeaturesEditRouteComponent,
-  //   path: 'features/edit',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
+  {
+    component: FeatureEditRouteComponent,
+    path: 'feature/edit',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
   // {
   //   component: GroupsListRouteComponent,
   //   path: 'groups',

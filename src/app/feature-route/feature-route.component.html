@@ -38,7 +38,7 @@
                 <button class="e-btn__small e-btn-warning" (click)="toggle(feature, environment)" *ngIf="environment.key == defaultEnvironmentKey && environment.enabled">Disable&nbsp;<i class="fa fa-times e-l__ml-5"></i></button>
                 <button class="e-btn__small e-btn-secondary" (click)="toggle(feature, environment)" *ngIf="environment.key == defaultEnvironmentKey && !environment.enabled">Enable&nbsp;<i class="fa fa-check e-l__ml-5"></i></button>
             </span>
-            <a [routerLink]="['/features/edit?key=' + feature.key]" class="e-btn__small e-btn-edit">Edit&nbsp;<i class="fa fa-edit e-l__ml-5"></i></a>
+            <a [routerLink]="['/feature/edit']" [queryParams]="{key: feature.key}" class="e-btn__small e-btn-edit">Edit&nbsp;<i class="fa fa-edit e-l__ml-5"></i></a>
           </td>
         </tr>
       </tbody>

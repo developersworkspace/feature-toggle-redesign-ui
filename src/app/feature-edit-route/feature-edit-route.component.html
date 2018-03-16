@@ -1,3 +1,108 @@
-<p>
-  feature-edit-route works!
-</p>
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="e-page-header">
+        Edit Feature
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5 form-group e-form-group">
+      <label class="e-edit-label">Key:</label>
+      <span class="e-edit-title">{{ feature.key }}</span>
+    </div>
+    <div class="col-lg-5 form-group e-form-group">
+      <label class="e-edit-label">Name:</label>
+      <span class="e-edit-title">{{ feature.name }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5 form-group e-form-group">
+      <label class="e-edit-label">Project:</label>
+      <span class="e-edit-title">{{ feature.project.name }}</span>
+    </div>
+    <div class="col-lg-5 form-group e-form-group">
+      <label class="e-edit-label">Type:</label>
+      <span class="e-edit-title">{{ feature.type }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5 form-group e-form-group">
+      <label class="e-edit-label">Environment:</label>
+      <span class="e-edit-title">{{ defaultEnvironmentKey }}</span>
+    </div>
+  </div>
+  <div *ngFor="let environment of feature.environments">
+    <div *ngIf="environment.key == defaultEnvironmentKey">
+      <div class="row e-l__mt-30">
+        <h2 class="col-lg-12 e-content-header">{{ environment.name }}</h2>
+      </div>
+      <div class="row">
+        <h3 class="col-lg-2 e-dropdown-label">
+          Add Consumer Groups
+        </h3>
+        <div class="col-lg-6 form-group e-form-group">
+          <select class="form-control e-form-control" [(ngModel)]="newConsumerGroup">
+            <option selected="selected" disabled>Select a consumer group</option>
+            <option *ngFor="let consumerGroup of consumerGroups" [ngValue]="consumerGroup">{{ consumerGroup.name }}</option>
+          </select>
+          <button (click)="addConsumerGroup(environment)" class="e-btn e-btn-primary e-btn-dropdown">Add</button>
+        </div>
+      </div>
+      <table class="table e-table e-table-striped">
+        <thead class="e-thead">
+          <tr>
+            <th>Key</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="environment.consumerGroups.length === 0">
+            <td colspan="3">No Consumer Groups</td>
+          </tr>
+          <tr *ngFor="let consumerGroup of environment.consumerGroups">
+            <td>{{ consumerGroup.key }}</td>
+            <td>{{ consumerGroup.name }}</td>
+            <td>
+              <button (click)="removeConsumerGroup(consumerGroup, environment)" class="e-btn e-btn-delete e-btn__small">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row e-l__mt-60">
+        <h3 class="col-lg-2 e-dropdown-label">
+          Add Options
+        </h3>
+        <input [(ngModel)]="newOption.key" type="text" placeholder="Add Option Key" class="col-lg-3 form-control e-form-control e-form-control__3">
+        <input [(ngModel)]="newOption.name" type="text" placeholder="Add Option Name" class="col-lg-3 form-control e-form-control e-form-control__3">
+        <input [(ngModel)]="newOption.value" type="text" placeholder="Add Option Value" class="col-lg-3 form-control e-form-control e-form-control__3">
+        <button (click)="addOption(environment)" class="e-btn e-btn-primary e-btn-add">Add</button>
+      </div>
+      <table class="table e-table e-table-striped e-l__mt-20">
+        <thead class="e-thead">
+          <tr>
+            <th>Key</th>
+            <th>Name</th>
+            <th>Value</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="environment.options.length === 0">
+            <td colspan="4">No options</td>
+          </tr>
+          <tr *ngFor="let option of environment.options">
+            <td>{{ option.key }}</td>
+            <td>{{ option.name }}</td>
+            <td>{{ option.value }}</td>
+            <td>
+              <button (click)="removeOption(environment, option)" class="e-btn e-btn-delete e-btn__small">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
