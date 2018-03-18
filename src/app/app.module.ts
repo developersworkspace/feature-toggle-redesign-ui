@@ -24,6 +24,7 @@ import { FeatureService } from './services/feature.service';
 import { ConsumerGroupService } from './services/consumer-group.service';
 import { ConsumerGroupRouteComponent } from './consumer-group-route/consumer-group-route.component';
 import { ConsumerGroupCreateRouteComponent } from './consumer-group-create-route/consumer-group-create-route.component';
+import { ConsumerGroupEditRouteComponent } from './consumer-group-edit-route/consumer-group-edit-route.component';
 
 const routes = [
   {
@@ -154,6 +155,7 @@ const routes = [
     FeatureEditRouteComponent,
     ConsumerGroupRouteComponent,
     ConsumerGroupCreateRouteComponent,
+    ConsumerGroupEditRouteComponent,
   ],
   imports: [
     BrowserModule,

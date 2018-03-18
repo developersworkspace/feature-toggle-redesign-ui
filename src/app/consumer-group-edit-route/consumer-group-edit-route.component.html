@@ -1,0 +1,61 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="e-page-header">Edit Consumer Group</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 form-group e-form-group">
+        <label class="e-edit-label">Key:</label>
+        <span class="e-edit-title">{{ consumerGroup.key }}</span>
+    </div>
+    <div class="col-lg-6 form-group e-form-group">
+        <label class="e-edit-label">Name:</label>
+        <span class="e-edit-title">{{ consumerGroup.name }}</span>
+    </div>
+  </div>
+  <h2 class="e-dropdown-label">
+    Add Consumers
+  </h2>
+  <div class="row">
+    <div class="col-lg-3 form-group">
+      <input class="form-control e-form-control" placeholder="Add Consumer" [(ngModel)]="newConsumer" />
+    </div>
+    <div class="col-lg-1">
+      <button (click)="addConsumer()" class="e-btn e-btn-primary e-btn-add">Add</button>
+    </div>
+    <div class="col-lg-5 form-group">
+      <label class="hidden">Search:</label>
+      <input class="form-control e-form-control" placeholder="Search Consumers" [(ngModel)]="filterQuery">
+      <i class="fa fa-search fa-fw e-search"></i>
+    </div>
+  </div>
+  <div *ngFor="let message of validationMessages">
+    <p class="e-text-danger">{{ message.message }}</p>
+  </div>
+  <table class="table e-table e-table-striped" [mfData]="consumerGroup.consumers | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead class="e-thead">
+      <tr>
+        <th>
+          <mfDefaultSorter by="id">Id</mfDefaultSorter>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let consumer of mf.data">
+        <td>{{ consumer }}</td>
+        <td>
+          <button (click)="removeConsumer(consumer)" class="e-btn__small e-btn-delete">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+          <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+  </table>
+</div>

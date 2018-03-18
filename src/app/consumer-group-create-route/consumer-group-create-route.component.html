@@ -14,8 +14,8 @@
       <input [(ngModel)]="consumerGroup.name" type="text" placeholder="Enter Consumer Group Name" class="form-control e-form-control">
     </div>
     <div *ngFor="let message of validationMessages">
-        <p class="e-text-danger">{{ message.message }}</p>
-      </div>
+      <p class="e-text-danger">{{ message.message }}</p>
+    </div>
     <button (click)="submit()" class="e-btn e-btn-primary e-btn-shadow pull-right">Create</button>
   </div>
 </div>
