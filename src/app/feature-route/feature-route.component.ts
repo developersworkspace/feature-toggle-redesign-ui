@@ -15,6 +15,8 @@ export class FeatureRouteComponent implements OnInit {
 
   public features: Feature[] = [];
 
+  public filterQuery: string = null;
+
   public toggleSelectedEnvironment: EnvironmentView = null;
 
   public toggleSelectedFeature: Feature = null;

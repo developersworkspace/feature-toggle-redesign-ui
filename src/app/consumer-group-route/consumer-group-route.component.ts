@@ -11,6 +11,8 @@ export class ConsumerGroupRouteComponent implements OnInit {
 
   public consumerGroups: ConsumerGroup[] = [];
 
+  public filterQuery: string = null;
+
   constructor(
     private consumerGroupService: ConsumerGroupService,
   ) {

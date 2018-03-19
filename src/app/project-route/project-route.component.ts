@@ -9,6 +9,8 @@ import { ProjectService } from '../services/project.service';
 })
 export class ProjectRouteComponent implements OnInit {
 
+  public filterQuery: string = null;
+
   public projects: Project[] = [];
 
   constructor(

@@ -11,6 +11,8 @@ export class EnvironmentRouteComponent implements OnInit {
 
   public environments: Environment[] = [];
 
+  public filterQuery: string = null;
+
   constructor(
     private environmentService: EnvironmentService,
   ) {

@@ -13,6 +13,8 @@ export class ConsumerGroupEditRouteComponent implements OnInit {
 
   public consumerGroup: ConsumerGroup = new ConsumerGroup([], null, null);
 
+  public filterQuery: string = null;
+
   public newConsumer: string = null;
 
   public validationMessages: ValidationMessage[] = [];
