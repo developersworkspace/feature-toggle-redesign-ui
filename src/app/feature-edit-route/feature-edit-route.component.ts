@@ -23,7 +23,7 @@ export class FeatureEditRouteComponent implements OnInit {
 
   public feature: Feature = new Feature([], null, null, null, new ProjectView(null, null), null);
 
-  public newConsumerGroup: ConsumerGroupView = new ConsumerGroupView([], null, null);
+  public newConsumerGroup: ConsumerGroupView = new ConsumerGroupView(null, null);
 
   public newOption: Option = new Option(null, null, null);
 
@@ -49,7 +49,7 @@ export class FeatureEditRouteComponent implements OnInit {
 
   public addConsumerGroup(environment: EnvironmentView): void {
     environment.consumerGroups.push(this.newConsumerGroup);
-    this.newConsumerGroup = new ConsumerGroupView([], null, null);
+    this.newConsumerGroup = new ConsumerGroupView(null, null);
 
     this.submit();
   }
@@ -75,13 +75,11 @@ export class FeatureEditRouteComponent implements OnInit {
     environment.options.splice(index, 1);
 
     this.submit();
-
-    this.submit();
   }
 
   private loadConsumerGroups(): void {
     this.consumerGroupService.list().subscribe((consumerGroups: ConsumerGroup[]) => {
-      this.consumerGroups = consumerGroups.map((x) => new ConsumerGroupView(x.consumers, x.key, x.name));
+      this.consumerGroups = consumerGroups.map((x) => new ConsumerGroupView(x.key, x.name));
     });
   }
 
@@ -93,7 +91,7 @@ export class FeatureEditRouteComponent implements OnInit {
 
   private submit(): void {
     this.featureService.update(this.feature).subscribe((feature: Feature) => {
-      // this.router.navigateByUrl('/feature');
+
     }, (err) => {
       this.validationMessages = err.error;
     });

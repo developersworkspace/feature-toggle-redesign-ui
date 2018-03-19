@@ -87,13 +87,13 @@ const routes = [
     //   AuthGuard
     // ]
   },
-  // {
-  //   component: GroupsEditRouteComponent,
-  //   path: 'groups/edit',
-  //   canActivate: [
-  //     AuthGuard
-  //   ]
-  // },
+  {
+    component: ConsumerGroupEditRouteComponent,
+    path: 'consumergroup/edit',
+    // canActivate: [
+    //   AuthGuard
+    // ]
+  },
   {
     component: AuditRouteComponent,
     path: 'audit',
